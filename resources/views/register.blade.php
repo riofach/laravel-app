@@ -14,6 +14,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12 my-3">
+
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <strong>{{ $message }}</strong>
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <form action="{{ route('register.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
