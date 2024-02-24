@@ -24,7 +24,9 @@ Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->na
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'auth'])->name('login.auth');
 
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])->name('register.store');
+
+Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'logout'])->name('logout');
 
 //route product
 Route::get('/create-product', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');

@@ -26,10 +26,8 @@
                 <form action="{{ route('login.auth') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="Email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="Email" name="email"
-                            aria-describedby="emailHelp" required>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="Email" class="form-label">Email or Name</label>
+                        <input type="email" class="form-control" id="Email" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="Password" class="form-label">Password</label>

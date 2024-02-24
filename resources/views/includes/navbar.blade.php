@@ -23,7 +23,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
     <div class="container">
-        <a class="navbar-brand nav-brand" href="#">GFood</a>
+        @if (Auth::user())
+            <a class="navbar-brand nav-brand" href="#">{{ Auth::user()->name }}</a>
+        @else
+            <a class="navbar-brand nav-brand" href="#">GFood</a>
+        @endif
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,18 +41,24 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ route('product') }}">Produk</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Keranjang</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Register</a>
-                </li>
+                @if (Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Keranjang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>

@@ -7,10 +7,11 @@
             </div>
         @endif
 
-        <a class="btnPrd my-2" href="{{ route('product.create') }}">
-            <button>Add Product</button>
-        </a>
-
+        @if (Auth::user())
+            <a class="btnPrd my-2" href="{{ route('product.create') }}">
+                <button>Add Product</button>
+            </a>
+        @endif
 
         <table class="table table-striped">
             <thead>
@@ -19,7 +20,9 @@
                     <th>Product</th>
                     <th>Harga</th>
                     <th>Stock</th>
-                    <th>Aksi</th>
+                    @if (Auth::user())
+                        <th>Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -30,16 +33,18 @@
                         <td>{{ $prd->name }}</td>
                         <td>Rp. {{ $prd->price }}</td>
                         <td>{{ $prd->stock }}</td>
-                        <td class="d-flex align-items-center">
-                            <a href="{{ route('product.edit', $prd->id) }}">
-                                <button class="btn btn-warning">Edit</button>
-                            </a>
-                            <form action="{{ route('product.delete', $prd->id) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger mx-2">Delete</button>
-                            </form>
-                        </td>
+                        @if (Auth::user())
+                            <td class="d-flex align-items-center">
+                                <a href="{{ route('product.edit', $prd->id) }}">
+                                    <button class="btn btn-warning">Edit</button>
+                                </a>
+                                <form action="{{ route('product.delete', $prd->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger mx-2">Delete</button>
+                                </form>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
