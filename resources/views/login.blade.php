@@ -14,15 +14,26 @@
     <div class="container">
         <div class="row">
             <div class="col-12 my-3">
-                <form>
+
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <strong>{{ $message }}</strong>
+                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                    </div>
+                @endif
+
+                <form action="{{ route('login.auth') }}" method="POST">
+                    @csrf
                     <div class="mb-3">
                         <label for="Email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="Email" name="email"
+                            aria-describedby="emailHelp" required>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                         <label for="Password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="Password">
+                        <input type="password" class="form-control" id="Password" name="password" required>
                     </div>
                     <div class="mb-3">
                         <label for="Name" class="form-label">Haven't Account ? <a

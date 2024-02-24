@@ -19,10 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\WelcomController::class, 'index'])->name('home');
 Route::get('/product', [App\Http\Controllers\WelcomController::class, 'product'])->name('product');
+
 Route::get('/login', [App\Http\Controllers\LoginController::class, 'index'])->name('login');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'auth'])->name('login.auth');
 
 Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register');
-Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store'])->name('register.store');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 //route product
 Route::get('/create-product', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
