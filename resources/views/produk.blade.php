@@ -7,12 +7,10 @@
             </div>
         @endif
 
-        <a class="fancy my-2" href="{{ route('product.create') }}">
-            <span class="top-key"></span>
-            <span class="text">Add Product</span>
-            <span class="bottom-key-1"></span>
-            <span class="bottom-key-2"></span>
+        <a class="btnPrd my-2" href="{{ route('product.create') }}">
+            <button>Add Product</button>
         </a>
+
 
         <table class="table table-striped">
             <thead>
